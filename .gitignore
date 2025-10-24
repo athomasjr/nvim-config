@@ -1,0 +1,22 @@
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
+
+# LazyVim/Plugin data
+lazy-lock.json
+.neoconf.json
+
+# System files
+.DS_Store
+
+# Personal notes
+notes/
+TODO.md
+
+# Claude Code docs
+CLAUDE.md
