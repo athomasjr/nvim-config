@@ -7,7 +7,7 @@ return {
   },
   opts = {
     defaults = {
-      file_ignore_patterns = { ".git/" },
+      file_ignore_patterns = { "%.git/", "%.git$", "node_modules/" },
     },
     pickers = {
       find_files = {
@@ -23,7 +23,7 @@ return {
         require("telescope.builtin").find_files({
           hidden = true,
           no_ignore = true,
-          file_ignore_patterns = { ".git/" },
+          file_ignore_patterns = { "%.git/", "%.git$", "node_modules/" },
         })
       end,
       desc = "Find Files (including hidden and ignored)",
@@ -34,7 +34,7 @@ return {
         require("telescope.builtin").find_files({
           hidden = true,
           no_ignore = true,
-          file_ignore_patterns = { ".git/" },
+          file_ignore_patterns = { "%.git/", "%.git$", "node_modules/" },
           cwd = require("lazyvim.util").root(),
         })
       end,
