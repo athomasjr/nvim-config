@@ -14,3 +14,26 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.formatoptions:remove({ "r", "o" })
   end,
 })
+
+-- Auto-close empty [No Name] buffers when opening a file
+vim.api.nvim_create_autocmd("BufReadPost", {
+  callback = function()
+    local bufs = vim.api.nvim_list_bufs()
+    for _, buf in ipairs(bufs) do
+      -- Check if buffer is valid, loaded, has no name, and is empty
+      if
+        vim.api.nvim_buf_is_valid(buf)
+        and vim.api.nvim_buf_is_loaded(buf)
+        and vim.api.nvim_buf_get_name(buf) == ""
+        and vim.api.nvim_buf_get_option(buf, "buftype") == ""
+        and not vim.api.nvim_buf_get_option(buf, "modified")
+      then
+        local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+        local is_empty = #lines == 1 and lines[1] == ""
+        if is_empty then
+          vim.api.nvim_buf_delete(buf, { force = false })
+        end
+      end
+    end
+  end,
+})
