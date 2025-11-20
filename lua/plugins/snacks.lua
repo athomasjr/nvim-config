@@ -3,10 +3,15 @@ return {
   opts = {
     picker = {
       sources = {
+        files = {
+          hidden = true,
+          ignored = true,
+          exclude = { ".git", ".DS_Store" },
+        },
         explorer = {
           hidden = true,
           ignored = true,
-          exclude = { ".git" },
+          exclude = { ".git", ".DS_Store" },
         },
       },
     },
