@@ -37,3 +37,20 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end
   end,
 })
+
+-- Command to clean up orphaned swap files
+-- Swap files can persist when Neovim exits improperly (crash, force-kill, etc.)
+-- causing "ATTENTION" E325 errors on next file open. This command deletes all
+-- swap files in the swap directory. Usage: :SwapClean
+vim.api.nvim_create_user_command("SwapClean", function()
+  vim.cmd("!find ~/.local/state/nvim/swap -name '*.swp' -delete")
+  print("Cleaned all swap files")
+end, {})
+
+-- Disable formatting for minified files
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.min.*",
+  callback = function(args)
+    vim.b[args.buf].autoformat = false
+  end,
+})

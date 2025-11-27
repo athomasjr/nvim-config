@@ -1,0 +1,37 @@
+[sqlfluff]
+dialect = postgres
+templater = raw
+max_line_length = 120
+indent_unit = space
+
+[sqlfluff:indentation]
+tab_space_size = 2
+indent_unit = space
+
+[sqlfluff:layout:type:comma]
+line_position = trailing
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.identifiers]
+capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.functions]
+capitalisation_policy = upper
+
+[sqlfluff:rules:capitalisation.literals]
+capitalisation_policy = upper
+
+# Don't enforce trailing commas
+[sqlfluff:rules:layout.select_targets]
+wildcard_policy = single
+
+# Allow single table references without aliases
+[sqlfluff:rules:aliasing.table]
+aliasing = explicit
+
+# More lenient line length for complex queries
+[sqlfluff:rules:layout.long_lines]
+ignore_comment_lines = true
+ignore_comment_clauses = true
