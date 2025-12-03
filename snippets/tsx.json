@@ -1,0 +1,11 @@
+{
+  "Default Function Component": {
+    "prefix": "dfc",
+    "body": [
+      "export default function ${1:ComponentName}() {",
+      "  return $0",
+      "}"
+    ],
+    "description": "Default export function component"
+  }
+}
