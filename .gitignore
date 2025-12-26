@@ -1,0 +1,17 @@
+# Test files
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
+
+# macOS
+.DS_Store
+
+# Neovim
+*.swp
+*.swo
+*~
