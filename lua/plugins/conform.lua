@@ -5,7 +5,6 @@ return {
       -- Extend existing formatters_by_ft instead of replacing
       opts.formatters_by_ft = opts.formatters_by_ft or {}
       opts.formatters_by_ft.go = { "golangci_lint" }
-      opts.formatters_by_ft.sql = { "sql_formatter" }
 
       -- Add custom formatter configurations
       opts.formatters = opts.formatters or {}
@@ -15,13 +14,9 @@ return {
         stdin = true,
         cwd = require("conform.util").root_file({ ".golangci.yml", ".golangci.yaml", "go.mod" }),
       }
-      opts.formatters.sql_formatter = {
-        prepend_args = {
-          "--language",
-          "postgresql",
-          "--config",
-          '{"keywordCase": "upper"}',
-        },
+      -- Override sqlfluff to use .sqlfluff config instead of hardcoded dialect
+      opts.formatters.sqlfluff = {
+        args = { "format", "--dialect=postgres", "-" },
       }
 
       return opts
