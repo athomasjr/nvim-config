@@ -15,3 +15,23 @@ data
 *.swp
 *.swo
 *~
+
+# Secrets / local config
+.env
+.env.*
+.mcp.json
+.gitconfig
+.gitmodules
+.claude/
+
+# Stray home dotfiles
+.bashrc
+.bash_profile
+.zshrc
+.zprofile
+.profile
+.ripgreprc
+
+# Editors
+.idea
+.vscode
