@@ -9,6 +9,10 @@
       {
         "language": ["typescript", "typescriptreact"],
         "path": "./typescript.json"
+      },
+      {
+        "language": "astro",
+        "path": "./astro.json"
       }
     ]
   }

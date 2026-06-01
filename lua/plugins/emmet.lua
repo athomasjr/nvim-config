@@ -13,6 +13,7 @@ return {
             "svelte",
             "vue",
             "templ",
+            "astro",
           },
         },
       },
